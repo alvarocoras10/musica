@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis 10 Canciones Favoritas del Año</title>
+    <!-- Carga de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fuente Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-zinc-950 text-zinc-100 font-sans antialiased selection:bg-emerald-500 selection:text-zinc-950 min-h-screen flex flex-col">
+
+    <!-- =====================================================================
+         CONFIGURACIÓN DE TUS 10 CANCIONES (EDITA ESTA LISTA A TU GUSTO)
+         =====================================================================
+         Instrucciones para añadir tus archivos locales:
+         1. Crea dos carpetas junto a este archivo index.html: "img" y "audio".
+         2. Guarda tus portadas en la carpeta "img" (ej: img/1.jpg, img/2.png...).
+         3. Guarda tus canciones en la carpeta "audio" (ej: audio/1.mp3...).
+         4. Cambia los valores de abajo (title, artist, cover, audio, startTime, duration).
+    ====================================================================== -->
+    <script>
+        const MIS_CANCIONES = [
+            {
+                id: 1,
+                title: "Título de la Canción 1",
+                artist: "Nombre del Artista 1",
+                // Pon aquí la ruta de tu imagen local (ej: 'img/1.jpg')
+                cover: "https://placehold.co/600x600/18181b/34d399?text=Portada+01",
+                // Pon aquí la ruta de tu archivo MP3 local (ej: 'audio/1.mp3')
+                audio: "audio/1.mp3",
+                startTime: 45, // Segundo exacto donde empieza el fragmento (ej. el estribillo)
+                duration: 15   // Duración máxima del fragmento en segundos antes de detenerse
+            },
+            {
+                id: 2,
+                title: "Título de la Canción 2",
+                artist: "Nombre del Artista 2",
+                cover: "https://placehold.co/600x600/18181b/34d399?text=Portada+02",
+                audio: "audio/2.mp3",
+                startTime: 30,
+                duration: 15
+            },
+            {
+                id: 3,
+                title: "Título de la Canción 3",
+                artist: "Nombre del Artista 3",
+                cover: "https://placehold.co/600x600/18181b/34d399?text=Portada+03",
+                audio: "audio/3.mp3",
+                startTime: 60,
+                duration: 15
+            },
+            {
+                id: 4,
+                title: "Título de la Canción 4",
+                artist: "Nombre del Artista 4",
+                cover: "https://placehold.co/600x600/18181b/34d399?text=Portada+04",
+                audio: "audio/4.mp3",
+                startTime: 20,
+                duration: 15
+            },
+            {
+                id: 5,
+                title: "Título de la Canción 5",
+                artist: "Nombre del Artista 5",
+                cover: "https://placehold.co/600x600/18181b/34d399?text=Portada+05",
+                audio: "audio/5.mp3",
+                startTime: 50,
+                duration: 15
+            },
+            {
+                id: 6,
+                title: "Título de la Canción 6",
+                artist: "Nombre del Artista 6",
+                cover: "https://placehold.co/600x600/18181b/34d399?text=Portada+06",
+                audio: "audio/6.mp3",
+                startTime: 15,
+                duration: 15
+            },
+            {
+                id: 7,
+                title: "Título de la Canción 7",
+                artist: "Nombre del Artista 7",
+                cover: "https://placehold.co/600x600/18181b/34d399?text=Portada+07",
+                audio: "audio/7.mp3",
+                startTime: 40,
+                duration: 15
+            },
+            {
+                id: 8,
+                title: "Título de la Canción 8",
+                artist: "Nombre del Artista 8",
+                cover: "https://placehold.co/600x600/18181b/34d399?text=Portada+08",
+                audio: "audio/8.mp3",
+                startTime: 35,
+                duration: 15
+            },
+            {
+                id: 9,
+                title: "Título de la Canción 9",
+                artist: "Nombre del Artista 9",
+                cover: "https://placehold.co/600x600/18181b/34d399?text=Portada+09",
+                audio: "audio/9.mp3",
+                startTime: 55,
+                duration: 15
+            },
+            {
+                id: 10,
+                title: "Título de la Canción 10",
+                artist: "Nombre del Artista 10",
+                cover: "https://placehold.co/600x600/18181b/34d399?text=Portada+10",
+                audio: "audio/10.mp3",
+                startTime: 25,
+                duration: 15
+            }
+        ];
+    </script>
+
+    <!-- Cabecera superior con título y controles de sonido -->
+    <header class="sticky top-0 z-40 bg-zinc-950/85 backdrop-blur-md border-b border-zinc-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            
+            <!-- Título de la colección -->
+            <div class="text-center sm:text-left">
+                <div class="flex items-center justify-center sm:justify-start gap-2">
+                    <span class="inline-block w-2 h-2 rounded-full bg-emerald-400"></span>
+                    <span class="text-xs font-medium uppercase tracking-widest text-zinc-400">Selección Personal • 2026</span>
+                </div>
+                <h1 class="text-xl sm:text-2xl font-bold tracking-tight text-white mt-0.5">
+                    Mis 10 Canciones Favoritas del Año
+                </h1>
+            </div>
+
+            <!-- Controles globales de audio (Desbloquear sonido + Volumen) -->
+            <div class="flex items-center gap-3 sm:gap-4 bg-zinc-900/90 border border-zinc-800 px-3.5 py-2 rounded-2xl shadow-sm">
+                
+                <!-- Botón discreto para activar/desbloquear sonido en el navegador -->
+                <button id="unlock-audio-btn" type="button" class="flex items-center gap-2 text-xs sm:text-sm font-medium px-3 py-1.5 rounded-xl bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/25 transition-all cursor-pointer">
+                    <svg id="icon-muted" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+                    </svg>
+                    <svg id="icon-unmuted" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                    </svg>
+                    <span id="unlock-text">Activar sonido</span>
+                </button>
+
+                <!-- Separador -->
+                <div class="h-4 w-px bg-zinc-800"></div>
+
+                <!-- Control de Volumen Global -->
+                <div class="flex items-center gap-2" title="Volumen global">
+                    <svg class="w-4 h-4 text-zinc-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5L6 9H2v6h4l5 4V5z"></path>
+                    </svg>
+                    <input id="global-volume" type="range" min="0" max="1" step="0.05" value="0.8" aria-label="Volumen global" class="w-20 sm:w-24 h-1.5 bg-zinc-700 rounded-lg appearance-none cursor-pointer accent-emerald-400">
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        
+        <!-- Instrucción sutil -->
+        <p class="text-sm text-zinc-400 mb-8 text-center sm:text-left">
+            Pasa el cursor sobre cualquier portada (o tócala en móvil) para escuchar un adelanto del tema.
+        </p>
+
+        <!-- Cuadrícula responsiva de 10 tarjetas -->
+        <div id="songs-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            <!-- Las tarjetas se generan automáticamente desde el array MIS_CANCIONES -->
+        </div>
+
+    </main>
+
+    <!-- Pie de página minimalista -->
+    <footer class="border-t border-zinc-900 py-6 text-center text-xs text-zinc-500">
+        Hecho para compartir música • Pasa el ratón sobre cada carátula para previsualizar
+    </footer>
+
+    <!-- Notificación discreta para avisos (ej. si falta el archivo mp3 o falta activar sonido) -->
+    <div id="status-toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="bg-zinc-900 border border-zinc-700 text-zinc-200 text-xs sm:text-sm px-4 py-3 rounded-xl shadow-xl flex items-center gap-2.5">
+            <span class="w-2 h-2 rounded-full bg-amber-400 shrink-0"></span>
+            <span id="toast-message">Haz clic en "Activar sonido" arriba para escuchar al pasar el ratón.</span>
+        </div>
+    </div>
+
+    <!-- Reproductor de audio oculto compartido -->
+    <audio id="preview-player" preload="none"></audio>
+
+    <!-- Lógica de reproducción, ecualizador y fade-out -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.getElementById('songs-grid');
+            const player = document.getElementById('preview-player');
+            const unlockBtn = document.getElementById('unlock-audio-btn');
+            const unlockText = document.getElementById('unlock-text');
+            const iconMuted = document.getElementById('icon-muted');
+            const iconUnmuted = document.getElementById('icon-unmuted');
+            const volumeSlider = document.getElementById('global-volume');
+            const toast = document.getElementById('status-toast');
+            const toastMessage = document.getElementById('toast-message');
+
+            let audioUnlocked = false;
+            let activeSongId = null;
+            let fadeInterval = null;
+            let durationTimeout = null;
+            let toastTimeout = null;
+            let globalVolume = parseFloat(volumeSlider.value);
+
+            // Muestra un aviso discreto en la esquina inferior
+            function showToast(msg) {
+                toastMessage.textContent = msg;
+                toast.classList.remove('translate-y-20', 'opacity-0');
+                clearTimeout(toastTimeout);
+                toastTimeout = setTimeout(() => {
+                    toast.classList.add('translate-y-20', 'opacity-0');
+                }, 3200);
+            }
+
+            // Marca el audio como desbloqueado tras interacción del usuario
+            function markAudioUnlocked() {
+                if (audioUnlocked) return;
+                audioUnlocked = true;
+                unlockText.textContent = 'Sonido activado';
+                iconMuted.classList.add('hidden');
+                iconUnmuted.classList.remove('hidden');
+                unlockBtn.classList.remove('bg-emerald-500/15', 'text-emerald-400', 'border-emerald-500/30');
+                unlockBtn.classList.add('bg-zinc-800', 'text-zinc-300', 'border-zinc-700');
+            }
+
+            // Botón superior "Activar sonido"
+            unlockBtn.addEventListener('click', () => {
+                // Reproducimos un micro-silencio mediante Web Audio API para desbloquear políticas del navegador
+                try {
+                    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+                    if (AudioCtx) {
+                        const ctx = new AudioCtx();
+                        const osc = ctx.createOscillator();
+                        const gain = ctx.createGain();
+                        gain.gain.value = 0;
+                        osc.connect(gain);
+                        gain.connect(ctx.destination);
+                        osc.start(0);
+                        osc.stop(0.01);
+                    }
+                } catch (e) {}
+
+                markAudioUnlocked();
+                showToast('Sonido activado. Pasa el ratón sobre una portada.');
+            });
+
+            // Control de volumen global
+            volumeSlider.addEventListener('input', (e) => {
+                globalVolume = parseFloat(e.target.value);
+                if (!fadeInterval && !player.paused) {
+                    player.volume = globalVolume;
+                }
+            });
+
+            // Actualiza el estado visual (ecualizador animado y borde activo) de las tarjetas
+            function updateCardVisuals(playingId) {
+                document.querySelectorAll('.song-card').forEach(card => {
+                    const id = parseInt(card.dataset.id, 10);
+                    const eq = card.querySelector('.equalizer-badge');
+                    const bars = card.querySelectorAll('.eq-bar');
+                    const coverImg = card.querySelector('.cover-img');
+
+                    if (id === playingId) {
+                        card.classList.add('border-emerald-500/60', 'bg-zinc-900');
+                        card.classList.remove('border-zinc-800/80', 'bg-zinc-900/50');
+                        eq.classList.remove('opacity-0', 'scale-90');
+                        eq.classList.add('opacity-100', 'scale-100');
+                        coverImg.classList.add('scale-105');
+                        bars.forEach(bar => bar.style.animationPlayState = 'running');
+                    } else {
+                        card.classList.remove('border-emerald-500/60', 'bg-zinc-900');
+                        card.classList.add('border-zinc-800/80', 'bg-zinc-900/50');
+                        eq.classList.add('opacity-0', 'scale-90');
+                        eq.classList.remove('opacity-100', 'scale-100');
+                        coverImg.classList.remove('scale-105');
+                        bars.forEach(bar => bar.style.animationPlayState = 'paused');
+                    }
+                });
+            }
+
+            // Inicia la reproducción de un fragmento
+            function startPreview(song) {
+                clearInterval(fadeInterval);
+                fadeInterval = null;
+                clearTimeout(durationTimeout);
+
+                activeSongId = song.id;
+                updateCardVisuals(song.id);
+
+                // Si cambia la pista, cargamos la nueva ruta
+                if (!player.src.endsWith(song.audio)) {
+                    player.src = song.audio;
+                }
+
+                player.volume = globalVolume;
+
+                const playFromStart = () => {
+                    try {
+                        if (song.startTime && !isNaN(song.startTime)) {
+                            player.currentTime = song.startTime;
+                        }
+                    } catch (err) {
+                        // Si el archivo aún no tiene metadatos cargados, se ajustará al cargar
+                    }
+
+                    const playPromise = player.play();
+                    if (playPromise !== undefined) {
+                        playPromise
+                            .then(() => {
+                                markAudioUnlocked();
+                                // Detener automáticamente con fade-out al cumplir la duración configurada
+                                const maxDurationMs = (song.duration || 15) * 1000;
+                                durationTimeout = setTimeout(() => {
+                                    stopPreviewWithFade();
+                                }, maxDurationMs);
+                            })
+                            .catch((error) => {
+                                updateCardVisuals(null);
+                                activeSongId = null;
+                                if (error.name === 'NotAllowedError') {
+                                    showToast('Pulsa "Activar sonido" arriba para permitir el audio.');
+                                } else {
+                                    showToast(`No se encontró el archivo: ${song.audio}`);
+                                }
+                            });
+                    }
+                };
+
+                if (player.readyState >= 1) {
+                    playFromStart();
+                } else {
+                    player.onloadedmetadata = () => {
+                        if (activeSongId === song.id) {
+                            playFromStart();
+                        }
+                    };
+                    player.onerror = () => {
+                        if (activeSongId === song.id) {
+                            updateCardVisuals(null);
+                            activeSongId = null;
+                            showToast(`Archivo no encontrado: ${song.audio}`);
+                        }
+                    };
+                    player.load();
+                }
+            }
+
+            // Detiene el audio suavemente bajando el volumen (fade-out)
+            function stopPreviewWithFade() {
+                clearTimeout(durationTimeout);
+                activeSongId = null;
+                updateCardVisuals(null);
+
+                if (player.paused) return;
+
+                clearInterval(fadeInterval);
+                const stepTime = 35; // ms entre pasos
+                const fadeSteps = 12; // ~420ms de desvanecimiento suave
+                const volumeStep = player.volume / fadeSteps;
+
+                fadeInterval = setInterval(() => {
+                    if (player.volume - volumeStep > 0.02) {
+                        player.volume = Math.max(0, player.volume - volumeStep);
+                    } else {
+                        clearInterval(fadeInterval);
+                        fadeInterval = null;
+                        player.pause();
+                        player.volume = globalVolume;
+                    }
+                }, stepTime);
+            }
+
+            // Renderizar las 10 tarjetas en la cuadrícula
+            MIS_CANCIONES.forEach((song) => {
+                const card = document.createElement('article');
+                card.dataset.id = song.id;
+                card.className = 'song-card group relative rounded-2xl bg-zinc-900/50 border border-zinc-800/80 p-3.5 transition-all duration-300 hover:border-zinc-700 flex flex-col';
+
+                const formattedNumber = String(song.id).padStart(2, '0');
+                const fallbackImg = `https://placehold.co/600x600/18181b/34d399?text=Top+${formattedNumber}`;
+
+                card.innerHTML = `
+                    <!-- Contenedor cuadrado de la portada (Área interactiva de hover/toque) -->
+                    <div class="cover-trigger relative aspect-square w-full rounded-xl overflow-hidden bg-zinc-800 cursor-pointer select-none">
+                        <img 
+                            src="${song.cover}" 
+                            alt="${song.title} - ${song.artist}" 
+                            onerror="this.onerror=null;this.src='${fallbackImg}';"
+                            class="cover-img w-full h-full object-cover transition-transform duration-500 ease-out"
+                        >
+                        
+                        <!-- Degradado sutil para legibilidad de insignias -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-black/30 opacity-80 group-hover:opacity-90 transition-opacity"></div>
+
+                        <!-- Número de posición (#01 - #10) -->
+                        <div class="absolute top-2.5 left-2.5 px-2.5 py-1 rounded-lg bg-zinc-950/75 backdrop-blur-md border border-white/10 text-xs font-bold tracking-wider text-white">
+                            #${formattedNumber}
+                        </div>
+
+                        <!-- Indicador de ecualizador animado cuando suena -->
+                        <div class="equalizer-badge absolute bottom-2.5 right-2.5 px-2.5 py-1.5 rounded-lg bg-emerald-500 text-zinc-950 shadow-lg flex items-center gap-1.5 opacity-0 scale-90 transition-all duration-300">
+                            <div class="flex items-end gap-[2px] h-3">
+                                <span class="eq-bar w-[2.5px] bg-zinc-950 rounded-full animate-bounce" style="height: 60%; animation-duration: 0.55s; animation-play-state: paused;"></span>
+                                <span class="eq-bar w-[2.5px] bg-zinc-950 rounded-full animate-bounce" style="height: 100%; animation-duration: 0.4s; animation-delay: 0.15s; animation-play-state: paused;"></span>
+                                <span class="eq-bar w-[2.5px] bg-zinc-950 rounded-full animate-bounce" style="height: 45%; animation-duration: 0.65s; animation-delay: 0.3s; animation-play-state: paused;"></span>
+                                <span class="eq-bar w-[2.5px] bg-zinc-950 rounded-full animate-bounce" style="height: 85%; animation-duration: 0.5s; animation-delay: 0.1s; animation-play-state: paused;"></span>
+                            </div>
+                            <span class="text-[10px] font-bold uppercase tracking-wider">Sonando</span>
+                        </div>
+                    </div>
+
+                    <!-- Información de la canción -->
+                    <div class="pt-3.5 px-0.5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h2 class="font-semibold text-base text-zinc-100 leading-snug line-clamp-1 group-hover:text-emerald-400 transition-colors" title="${song.title}">
+                                ${song.title}
+                            </h2>
+                            <p class="text-sm text-zinc-400 mt-0.5 line-clamp-1" title="${song.artist}">
+                                ${song.artist}
+                            </p>
+                        </div>
+                    </div>
+                `;
+
+                const trigger = card.querySelector('.cover-trigger');
+
+                // Eventos de ratón (Desktop)
+                trigger.addEventListener('mouseenter', () => {
+                    startPreview(song);
+                });
+
+                trigger.addEventListener('mouseleave', () => {
+                    if (activeSongId === song.id) {
+                        stopPreviewWithFade();
+                    }
+                });
+
+                // Soporte táctil para móviles y tablets (tocar para reproducir / tocar de nuevo para pausar)
+                trigger.addEventListener('click', () => {
+                    markAudioUnlocked();
+                    if (activeSongId === song.id && !player.paused) {
+                        stopPreviewWithFade();
+                    } else {
+                        startPreview(song);
+                    }
+                });
+
+                grid.appendChild(card);
+            });
+        });
+    </script>
+</body>
+</html>
