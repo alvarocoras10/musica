@@ -321,11 +321,16 @@
 
                 const playFromStart = () => {
                     try {
-                        if (song.startTime && !isNaN(song.startTime)) {
+                        const previewDuration = song.duration || 15;
+                        if (player.duration && !isNaN(player.duration) && isFinite(player.duration)) {
+                            // Calculamos el punto máximo de inicio dejando margen para la duración del preview + 2s
+                            const maxStart = Math.max(0, player.duration - previewDuration - 2);
+                            player.currentTime = Math.random() * maxStart;
+                        } else if (song.startTime && !isNaN(song.startTime)) {
                             player.currentTime = song.startTime;
                         }
                     } catch (err) {
-                        // Si el archivo aún no tiene metadatos cargados, se ajustará al cargar
+                        // Si el archivo aún no permite cambiar el tiempo, se reproducirá desde el principio
                     }
 
                     const playPromise = player.play();
